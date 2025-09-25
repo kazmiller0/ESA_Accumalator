@@ -1,1 +1,0 @@
-/Users/kazmiller/CLionProjects/untitled/third_party/gmp/GMP-6.2.1/mpn/arm64/mul_1.asm

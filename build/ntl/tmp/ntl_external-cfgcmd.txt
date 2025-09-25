@@ -1,1 +1,0 @@
-cmd='cd;<SOURCE_DIR>/src;&&;./configure;NTL_GMP_LIP=on;GMP_PREFIX=/Users/kazmiller/CLionProjects/untitled/build/gmp_install;PREFIX=/Users/kazmiller/CLionProjects/untitled/build/ntl_install'

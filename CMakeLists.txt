@@ -1,59 +1,48 @@
-cmake_minimum_required(VERSION 3.10)
-project(esa_accumulator VERSION 1.0.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.16)
+project(ExpressiveAccumulator LANGUAGES CXX)
 
-# 设置C++标准
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 查找OpenSSL
+# 在 Homebrew 的默认路径中查找库和头文件
+list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew")
+
+# --- 1. 查找依赖 ---
 find_package(OpenSSL REQUIRED)
+# GMP 和 FLINT 都没有提供标准的 CMake 配置文件，我们手动创建接口
+add_library(gmp_interface INTERFACE)
+target_include_directories(gmp_interface INTERFACE /opt/homebrew/include)
+target_link_libraries(gmp_interface INTERFACE /opt/homebrew/lib/libgmp.a)
 
-# 编译选项
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O2")
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -DDEBUG")
-endif()
+add_library(flint_interface INTERFACE)
+target_include_directories(flint_interface INTERFACE /opt/homebrew/include)
+target_link_libraries(flint_interface INTERFACE /opt/homebrew/lib/libflint.dylib)
 
-# 包含目录
-include_directories(include)
-include_directories(${OPENSSL_INCLUDE_DIR})
 
-# 源文件列表
-set(ESA_SOURCES
-    src/bigint_impl.cpp
-    src/group_element_impl.cpp
-    src/zk_proof_impl.cpp
-    src/polynomial_commitment.cpp
-    src/simple_polynomial_accumulator.cpp
+# --- 2. 构建 MCL ---
+add_subdirectory(third_party/mcl)
+
+
+# --- 3. 定义可执行文件 ---
+add_executable(comprehensive_test examples/comprehensive_test.cpp src/expressive_accumulator.cpp)
+add_executable(performance_test examples/performance_test.cpp src/expressive_accumulator.cpp)
+
+
+# --- 4. 设置链接 ---
+# 添加头文件目录
+target_include_directories(comprehensive_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(performance_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# 链接库文件
+target_link_libraries(comprehensive_test PRIVATE
+    mcl
+    flint_interface
+    gmp_interface
+    ${OPENSSL_LIBRARIES}
 )
-
-# 头文件列表
-set(ESA_HEADERS
-    include/basic_types.h
-    include/polynomial_commitment.h
-    include/simple_polynomial_accumulator.h
+target_link_libraries(performance_test PRIVATE
+    mcl
+    flint_interface
+    gmp_interface
+    ${OPENSSL_LIBRARIES}
 )
-
-# 创建静态库
-add_library(esa_lib STATIC ${ESA_SOURCES} ${ESA_HEADERS})
-
-# 设置目标属性
-target_include_directories(esa_lib PUBLIC include)
-target_link_libraries(esa_lib ${OPENSSL_LIBRARIES})
-
-# 创建示例程序
-# add_executable(esa_examples examples/usage_examples.cpp)
-# target_link_libraries(esa_examples esa_lib)
-
-# 创建简化多项式示例程序
-add_executable(simple_polynomial_examples examples/simple_polynomial_examples.cpp)
-target_link_libraries(simple_polynomial_examples esa_lib)
-
-# 安装规则
-install(TARGETS esa_lib simple_polynomial_examples
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
-)
-
-install(FILES ${ESA_HEADERS} DESTINATION include)

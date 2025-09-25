@@ -1,10 +1,8 @@
 # 构建目录
 build/
+build_*/
 cmake-build-*/
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
+build_flint/
 
 # 编译产物
 *.o
@@ -12,10 +10,9 @@ Makefile
 *.so
 *.dylib
 *.exe
-esa_examples
-usage_examples
+*.dll
 
-# IDE文件
+# IDE 文件
 .vscode/
 .idea/
 *.swp
@@ -26,10 +23,29 @@ usage_examples
 .DS_Store
 Thumbs.db
 
-# 日志文件
-*.log
-
 # 临时文件
 *.tmp
 *.temp
+*.log
 
+# 测试输出
+test_output/
+debug_*
+
+# 第三方库构建产物
+third_party/*/build/
+third_party/*/obj/
+third_party/*/bin/
+
+# MCL库 (作为子模块处理)
+third_party/mcl/
+
+# CMake 缓存
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# 可执行文件
+comprehensive_test
+performance_test

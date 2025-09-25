@@ -1,1 +1,0 @@
-cmd='<SOURCE_DIR>/configure;--prefix=/Users/kazmiller/CLionProjects/untitled/build/gmp_install;--disable-shared;--enable-static;--with-pic;CFLAGS=-fPIC'
