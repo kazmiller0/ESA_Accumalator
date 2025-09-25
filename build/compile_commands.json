@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/Users/kazmiller/CLionProjects/untitled/build",
+  "command": "/usr/bin/clang++ -DMCL_BINT_ASM_X64=0 -DMCL_FP_BIT=384 -DMCL_FR_BIT=256 -DMCL_USE_LLVM=1 -I/Users/kazmiller/CLionProjects/untitled/build/gmp_install/include -I/Users/kazmiller/CLionProjects/untitled/build/ntl_install/include -I/Users/kazmiller/CLionProjects/untitled/third_party/mcl/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/performance_test.dir/examples/performance_test.cpp.o -c /Users/kazmiller/CLionProjects/untitled/examples/performance_test.cpp",
+  "file": "/Users/kazmiller/CLionProjects/untitled/examples/performance_test.cpp",
+  "output": "CMakeFiles/performance_test.dir/examples/performance_test.cpp.o"
+},
+{
+  "directory": "/Users/kazmiller/CLionProjects/untitled/build",
+  "command": "/usr/bin/clang++ -DMCL_BINT_ASM_X64=0 -DMCL_FP_BIT=384 -DMCL_FR_BIT=256 -DMCL_USE_LLVM=1 -I/Users/kazmiller/CLionProjects/untitled/build/gmp_install/include -I/Users/kazmiller/CLionProjects/untitled/build/ntl_install/include -I/Users/kazmiller/CLionProjects/untitled/third_party/mcl/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/performance_test.dir/src/expressive_accumulator.cpp.o -c /Users/kazmiller/CLionProjects/untitled/src/expressive_accumulator.cpp",
+  "file": "/Users/kazmiller/CLionProjects/untitled/src/expressive_accumulator.cpp",
+  "output": "CMakeFiles/performance_test.dir/src/expressive_accumulator.cpp.o"
+},
+{
+  "directory": "/Users/kazmiller/CLionProjects/untitled/build",
+  "command": "/usr/bin/clang++ -DMCL_BINT_ASM_X64=0 -DMCL_FP_BIT=384 -DMCL_FR_BIT=256 -DMCL_USE_LLVM=1 -I/Users/kazmiller/CLionProjects/untitled/build/gmp_install/include -I/Users/kazmiller/CLionProjects/untitled/build/ntl_install/include -I/Users/kazmiller/CLionProjects/untitled/third_party/mcl/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/comprehensive_test.dir/examples/comprehensive_test.cpp.o -c /Users/kazmiller/CLionProjects/untitled/examples/comprehensive_test.cpp",
+  "file": "/Users/kazmiller/CLionProjects/untitled/examples/comprehensive_test.cpp",
+  "output": "CMakeFiles/comprehensive_test.dir/examples/comprehensive_test.cpp.o"
+},
+{
+  "directory": "/Users/kazmiller/CLionProjects/untitled/build",
+  "command": "/usr/bin/clang++ -DMCL_BINT_ASM_X64=0 -DMCL_FP_BIT=384 -DMCL_FR_BIT=256 -DMCL_USE_LLVM=1 -I/Users/kazmiller/CLionProjects/untitled/build/gmp_install/include -I/Users/kazmiller/CLionProjects/untitled/build/ntl_install/include -I/Users/kazmiller/CLionProjects/untitled/third_party/mcl/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/comprehensive_test.dir/src/expressive_accumulator.cpp.o -c /Users/kazmiller/CLionProjects/untitled/src/expressive_accumulator.cpp",
+  "file": "/Users/kazmiller/CLionProjects/untitled/src/expressive_accumulator.cpp",
+  "output": "CMakeFiles/comprehensive_test.dir/src/expressive_accumulator.cpp.o"
+},
+{
+  "directory": "/Users/kazmiller/CLionProjects/untitled/build/third_party/mcl",
+  "command": "/usr/bin/clang++ -DMCL_BINT_ASM_X64=0 -DMCL_FP_BIT=384 -DMCL_FR_BIT=256 -DMCL_USE_LLVM=1 -Dmcl_EXPORTS -I/Users/kazmiller/CLionProjects/untitled/third_party/mcl/include -g -std=gnu++17 -arch arm64 -fPIC -Wall -Wextra -Wformat=2 -Wcast-qual -Wcast-align -Wwrite-strings -Wfloat-equal -Wpointer-arith -DNDEBUG -O3 -fPIC -o CMakeFiles/mcl.dir/src/fp.cpp.o -c /Users/kazmiller/CLionProjects/untitled/third_party/mcl/src/fp.cpp",
+  "file": "/Users/kazmiller/CLionProjects/untitled/third_party/mcl/src/fp.cpp",
+  "output": "third_party/mcl/CMakeFiles/mcl.dir/src/fp.cpp.o"
+},
+{
+  "directory": "/Users/kazmiller/CLionProjects/untitled/build/third_party/mcl",
+  "command": "/usr/bin/clang++ -DMCL_BINT_ASM_X64=0 -DMCL_FP_BIT=384 -DMCL_FR_BIT=256 -DMCL_USE_LLVM=1 -I/Users/kazmiller/CLionProjects/untitled/third_party/mcl/include -g -std=gnu++17 -arch arm64 -fPIC -Wall -Wextra -Wformat=2 -Wcast-qual -Wcast-align -Wwrite-strings -Wfloat-equal -Wpointer-arith -DNDEBUG -O3 -fPIC -o CMakeFiles/mcl_st.dir/src/fp.cpp.o -c /Users/kazmiller/CLionProjects/untitled/third_party/mcl/src/fp.cpp",
+  "file": "/Users/kazmiller/CLionProjects/untitled/third_party/mcl/src/fp.cpp",
+  "output": "third_party/mcl/CMakeFiles/mcl_st.dir/src/fp.cpp.o"
+}
+]

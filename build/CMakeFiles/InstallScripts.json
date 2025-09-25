@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/kazmiller/CLionProjects/untitled/build/cmake_install.cmake",
+		"/Users/kazmiller/CLionProjects/untitled/build/third_party/mcl/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
