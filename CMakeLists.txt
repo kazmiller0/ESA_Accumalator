@@ -24,6 +24,9 @@ add_subdirectory(third_party/mcl)
 
 
 # --- 3. 定义可执行文件 ---
+# 设置输出目录
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 add_executable(comprehensive_test examples/comprehensive_test.cpp src/expressive_accumulator.cpp)
 add_executable(performance_test examples/performance_test.cpp src/expressive_accumulator.cpp)
 

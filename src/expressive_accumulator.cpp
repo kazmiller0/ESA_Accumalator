@@ -36,12 +36,39 @@ extern "C" {
 // 初始化 FLINT 上下文的函数
 void initFlintContext() {
     // 使用 BLS12-381 的标量域模数 (Fr 的模数)
-    auto p_str = mcl::bls12::Fr::getModulo();
-    fmpz_t p;
-    fmpz_init(p);
-    fmpz_set_str(p, p_str.c_str(), 10);
-    fmpz_mod_ctx_init(flint_ctx, p);
-    fmpz_clear(p);
+    try {
+        auto p_str = mcl::bls12::Fr::getModulo();
+        std::cout << "MCL modulo string: " << p_str << std::endl;
+        
+        fmpz_t p;
+        fmpz_init(p);
+        int result = fmpz_set_str(p, p_str.c_str(), 10);
+        
+        if (result != 0) {
+            throw std::runtime_error("Failed to parse MCL modulo string");
+        }
+        
+        fmpz_mod_ctx_init(flint_ctx, p);
+        fmpz_clear(p);
+        std::cout << "FLINT context initialized successfully" << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Error initializing FLINT context: " << e.what() << std::endl;
+        // 使用硬编码的模数作为后备
+        const char* p_str_hardcoded = "52435875175126190479447740508185965837690552500527637822603658699938581184513";
+        std::cout << "Using hardcoded modulo: " << p_str_hardcoded << std::endl;
+        
+        fmpz_t p;
+        fmpz_init(p);
+        int result = fmpz_set_str(p, p_str_hardcoded, 10);
+        
+        if (result != 0) {
+            throw std::runtime_error("Failed to parse hardcoded modulo string");
+        }
+        
+        fmpz_mod_ctx_init(flint_ctx, p);
+        fmpz_clear(p);
+        std::cout << "FLINT context initialized with hardcoded modulo" << std::endl;
+    }
 }
 
 // PolynomialUtils 命名空间，用于封装 FLINT 多项式操作

@@ -11,10 +11,8 @@ extern "C" {
 }
 
 #include "expressive_accumulator.h"
-#include <NTL/ZZ_p.h>
 
 using namespace expressive_accumulator;
-using namespace NTL;
 
 // 声明外部定义的 FLINT 上下文
 extern "C" {
